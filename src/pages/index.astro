@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+import { picks } from '../data/picks';
+---
+<Base title="Malory">
+  <section class="hero">
+    <div class="shapes" aria-hidden="true"><i></i><i></i><i></i></div>
+    <h1>Things worth your money, tested by someone who cares.</h1>
+    <p>Malory's short list of favorites, with a straight answer on why each one made it.</p>
+    <a class="btn" href="#picks">See the picks</a>
+  </section>
+  <section id="picks" class="wrap">
+    <h2>Current favorites</h2>
+    <div class="grid">
+      {picks.map((p) => (
+        <article class="card">
+          <p class="tag">{p.category}</p>
+          <h3>{p.title}</h3>
+          <p>{p.blurb}</p>
+          <AffiliateLink href={p.url}>Check it out</AffiliateLink>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

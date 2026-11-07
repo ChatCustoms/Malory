@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+const { title, description = 'Honest picks, chosen with care.' } = Astro.props;
+const full = title === 'Malory' ? title : `${title} | Malory`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{full}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="bar">
+    <a class="logo" href="/">Malory</a>
+    <nav><a href="/#picks">Picks</a><a href="/about">About</a><a href="/disclosure">Disclosure</a></nav>
+  </header>
+  <main><slot /></main>
+  <footer>
+    <p>Some links on this site are affiliate links. If you buy through them, Malory may earn a commission at no extra cost to you. <a href="/disclosure">Read the full disclosure</a>.</p>
+    <p><a href="/privacy">Privacy</a> · © {new Date().getFullYear()} Malory</p>
+  </footer>
+</body>
+</html>
