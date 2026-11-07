@@ -1,4 +1,5 @@
 ---
 const { href, class: cls = 'btn' } = Astro.props;
+const live = href && href !== '#';
 ---
-<a href={href} class={cls} target="_blank" rel="sponsored nofollow noopener"><slot /></a>
+<a href={href} class={cls} target={live ? '_blank' : undefined} rel="sponsored nofollow noopener"><slot /></a>

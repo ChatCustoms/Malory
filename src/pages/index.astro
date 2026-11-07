@@ -1,26 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
 import AffiliateLink from '../components/AffiliateLink.astro';
-import { picks } from '../data/picks';
+import { profile, links, socials } from '../data/site';
 ---
 <Base title="Malory">
-  <section class="hero">
-    <div class="shapes" aria-hidden="true"><i></i><i></i><i></i></div>
-    <h1>Things worth your money, tested by someone who cares.</h1>
-    <p>Malory's short list of favorites, with a straight answer on why each one made it.</p>
-    <a class="btn" href="#picks">See the picks</a>
-  </section>
-  <section id="picks" class="wrap">
-    <h2>Current favorites</h2>
-    <div class="grid">
-      {picks.map((p) => (
-        <article class="card">
-          <p class="tag">{p.category}</p>
-          <h3>{p.title}</h3>
-          <p>{p.blurb}</p>
-          <AffiliateLink href={p.url}>Check it out</AffiliateLink>
-        </article>
-      ))}
+  <section class="profile">
+    <div class="avatar">
+      {profile.avatar
+        ? <img src={profile.avatar} alt={profile.name} />
+        : <span aria-hidden="true">{profile.name[0]}</span>}
     </div>
+    <h1>{profile.name}</h1>
+    <p>{profile.tagline}</p>
   </section>
+
+  <nav class="links" id-"picks" aria-label="Recommended links">
+    {links.map((l, i) => (
+      <AffiliateLink href={l.url} class={i === 0 ? 'link featured' : 'link'}>
+        <b>{l.label}</b>
+        <small>{l.note}</small>
+      </AffiliateLink>
+    ))}
+  </nav>
+
+  <p class="note">Some of these are affiliate links. <a href="/disclosure">Here is what that means</a>.</p>
+
+  {socials.length > 0 && (
+    <div class="socials">
+      {socials.map((s) => <a href={s.url} rel="noopener" target="_blank">{s.label}</a>)}
+    </div>
+  )}
 </Base>
