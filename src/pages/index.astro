@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import AffiliateLink from '../components/AffiliateLink.astro';
-import { profile, links, socials } from '../data/site';
+import { profile, shop, sections, socials } from '../data/site';
+const shopLive = shop.url && shop.url !== '#';
 ---
 <Base title="Malory">
   <section class="profile">
@@ -14,16 +15,28 @@ import { profile, links, socials } from '../data/site';
     <p>{profile.tagline}</p>
   </section>
 
-  <nav class="links" id-"picks" aria-label="Recommended links">
-    {links.map((l, i) => (
-      <AffiliateLink href={l.url} class={i === 0 ? 'link featured' : 'link'}>
-        <b>{l.label}</b>
-        <small>{l.note}</small>
-      </AffiliateLink>
-    ))}
-  </nav>
+  <div class="links" id="picks">
+    <a href={shop.url} class="link featured" target={shopLive ? '_blank' : undefined} rel="noopener">
+      <b>{shop.label}</b>
+      <small>{shop.note}</small>
+    </a>
+  </div>
 
-  <p class="note">Some of these are affiliate links. <a href="/disclosure">Here is what that means</a>.</p>
+  <p class="note">Some links below are affiliate links. As an Amazon Associate, Malory earns from qualifying purchases. <a href="/disclosure">Details</a>.</p>
+
+  {sections.map((s) => (
+    <section class="group">
+      <h2>{s.title}</h2>
+      <nav class="links" aria-label={s.title}>
+        {s.items.map((l) => (
+          <AffiliateLink href={l.url} class="link">
+            <b>{l.label}</b>
+            <small>{l.note}</small>
+          </AffiliateLink>
+        ))}
+      </nav>
+    </section>
+  ))}
 
   {socials.length > 0 && (
     <div class="socials">

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title, description = 'Honest picks, chosen with care.' } = Astro.props;
+const { title, description = 'Honest picks and handmade favorites, chosen with care.' } = Astro.props;
 const full = title === 'Malory' ? title : `${title} | Malory`;
 ---
 <!doctype html>
@@ -18,11 +18,11 @@ const full = title === 'Malory' ? title : `${title} | Malory`;
 <body>
   <header class="bar">
     <a class="logo" href="/">Malory</a>
-    <nav><a href="/#picks">Picks</a><a href="/about">About</a><a href="/disclosure">Disclosure</a></nav>
+    <nav><a href="/#picks">Shop</a><a href="/about">About</a><a href="/disclosure">Disclosure</a></nav>
   </header>
   <main><slot /></main>
   <footer>
-    <p>Some links on this site are affiliate links. If you buy through them, Malory may earn a commission at no extra cost to you. <a href="/disclosure">Read the full disclosure</a>.</p>
+    <p>As an Amazon Associate, Malory earns from qualifying purchases. Some links on this site are affiliate links, which means she may earn a commission at no extra cost to you. <a href="/disclosure">Read the full disclosure</a>.</p>
     <p><a href="/privacy">Privacy</a> · © {new Date().getFullYear()} Malory</p>
   </footer>
 </body>

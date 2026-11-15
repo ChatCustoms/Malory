@@ -5,13 +5,31 @@ export const profile = {
   avatar: '', // e.g. '/avatar.jpg' after you put a photo in the public folder; blank shows her initial
 };
 
-// Replace each url with the affiliate link she sends. Keep '#' until then.
-export const links = [
-  { label: 'Featured pick', note: 'Why this is the one to start with.', url: '#' },
-  { label: 'Link title two', note: 'One short line about it.', url: '#' },
-  { label: 'Link title three', note: 'One short line about it.', url: '#' },
-  { label: 'Link title four', note: 'One short line about it.', url: '#' },
-  { label: 'Link title five', note: 'One short line about it.', url: '#' },
+// Her own shop (not an affiliate link). Replace '#' with the shop URL.
+export const shop = {
+  label: 'Shop my designs',
+  note: 'Shirts, sweaters, mugs and more, made by me.',
+  url: '#',
+};
+
+// Affiliate links, grouped by retailer. Replace each '#' with the link she sends.
+export const sections = [
+  {
+    title: 'Amazon favorites',
+    items: [
+      { label: 'Amazon pick one', note: 'One short line about it.', url: '#' },
+      { label: 'Amazon pick two', note: 'One short line about it.', url: '#' },
+      { label: 'Amazon pick three', note: 'One short line about it.', url: '#' },
+    ],
+  },
+  {
+    title: 'Walmart favorites',
+    items: [
+      { label: 'Walmart pick one', note: 'One short line about it.', url: '#' },
+      { label: 'Walmart pick two', note: 'One short line about it.', url: '#' },
+      { label: 'Walmart pick three', note: 'One short line about it.', url: '#' },
+    ],
+  },
 ];
 
 // Add her profiles when she has them, for example:
